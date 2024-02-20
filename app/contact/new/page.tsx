@@ -1,12 +1,12 @@
 'use client';
-import React, { useCallback } from 'react'
+import React from 'react'
 
-import { useState } from 'react';
+
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { useForm,Controller} from 'react-hook-form';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter }  from 'next/navigation';
 interface postForm{
   title:string,
   body:string
@@ -14,7 +14,6 @@ interface postForm{
 const NewForm = () => {
     const router=useRouter();
     const {register,control,handleSubmit}=useForm<postForm>();
-    console.log(register)
 
 
   return (
@@ -25,11 +24,11 @@ const NewForm = () => {
     })}>
 
         <div className="label">
-        <span className="label-text pb-1">What is your name?</span></div>
+        <span className="label-text pb-1">Title</span></div>
 
         <input type="text" placeholder="Type here" {...register('title')}  className="input input-bordered w-full max-w-xs " />
         <div className="label">
-        <span className="label-text pb-1">another one</span></div>
+        <span className="label-text pb-1">Paste code</span></div>
         <Controller name="body" control={control} render={({field})=><SimpleMDE placeholder='type something' {...field} />}/>
         
 
